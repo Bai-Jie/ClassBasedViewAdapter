@@ -10,8 +10,6 @@ import java.util.List;
 
 import gq.baijie.classbasedviewadapter.R;
 import gq.baijie.classbasedviewadapter.android.adapter.ClassBasedRecyclerViewAdapter;
-import gq.baijie.classbasedviewadapter.android.adapter.ViewHolderFactoryRegister;
-import gq.baijie.classbasedviewadapter.android.adapter.ViewHolderFactoryRegisters;
 import gq.baijie.classbasedviewadapter.android.sample.ui.entity.Type1;
 import gq.baijie.classbasedviewadapter.android.sample.ui.entity.Type2;
 import gq.baijie.classbasedviewadapter.android.sample.ui.entity.Type3;
@@ -33,11 +31,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(mAdapter);
 
-        final ViewHolderFactoryRegister register =
-                ViewHolderFactoryRegisters.defaultViewHolderFactoryRegister();
-        register.registerViewHolderFactory(new ViewType1Holder.Factory());
-        register.registerViewHolderFactory(new ViewType2Holder.Factory());
-        register.registerViewHolderFactory(new ViewType3Holder.Factory());
+        mAdapter.getRegister().registerViewHolderFactory(new ViewType1Holder.Factory());
+        mAdapter.getRegister().registerViewHolderFactory(new ViewType2Holder.Factory());
+        mAdapter.getRegister().registerViewHolderFactory(new ViewType3Holder.Factory());
 
         mAdapter.setDataset(SAMPLE);
         mAdapter.notifyDataSetChanged();

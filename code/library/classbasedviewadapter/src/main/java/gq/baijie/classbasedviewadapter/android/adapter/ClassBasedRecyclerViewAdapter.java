@@ -1,6 +1,7 @@
 package gq.baijie.classbasedviewadapter.android.adapter;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
@@ -10,6 +11,7 @@ public class ClassBasedRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
 
     private List dataset;
 
+    @Nullable
     private ViewHolderFactoryRegister register;
 
     public List getDataset() {
@@ -20,12 +22,8 @@ public class ClassBasedRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
         this.dataset = dataset;
     }
 
-    public ViewHolderFactoryRegister getRegister() {
-        return register;
-    }
-
     @NonNull
-    private ViewHolderFactoryRegister getNonNullRegister() {
+    public ViewHolderFactoryRegister getRegister() {
         if (register != null) {
             return register;
         } else {
@@ -33,7 +31,12 @@ public class ClassBasedRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
         }
     }
 
-    public void setRegister(ViewHolderFactoryRegister register) {
+    /**
+     * set {@link ViewHolderFactoryRegister} used to find {@link ViewHolderFactory}
+     *
+     * @param register a {@link ViewHolderFactoryRegister} or null to use default register
+     */
+    public void setRegister(@Nullable ViewHolderFactoryRegister register) {
         this.register = register;
     }
 
@@ -44,17 +47,17 @@ public class ClassBasedRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
 
     @Override
     public int getItemViewType(int position) {
-        return getNonNullRegister().getItemViewType(dataset.get(position).getClass());
+        return getRegister().getItemViewType(dataset.get(position).getClass());
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return getNonNullRegister().createViewHolder(parent, viewType);
+        return getRegister().createViewHolder(parent, viewType);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        getNonNullRegister().bindViewHolder(holder, dataset.get(position));
+        getRegister().bindViewHolder(holder, dataset.get(position));
     }
 
 }
