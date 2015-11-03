@@ -7,6 +7,8 @@ public interface ViewHolderFactoryRegister {
 
     void registerViewHolderFactory(ViewHolderFactory viewHolderFactory);
 
+    void clear();
+
     int getItemViewType(Class itemType);
 
     RecyclerView.ViewHolder createViewHolder(ViewGroup parent, int itemViewType);

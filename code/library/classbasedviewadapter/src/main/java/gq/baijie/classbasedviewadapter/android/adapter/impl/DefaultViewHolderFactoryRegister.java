@@ -13,10 +13,26 @@ import gq.baijie.classbasedviewadapter.android.adapter.ViewHolderFactoryRegister
 
 public class DefaultViewHolderFactoryRegister implements ViewHolderFactoryRegister {
 
-    private int counter = 1;
+    private int counter;
 
-    private Map<Class, ViewHolderFactoryWrapper> factories = new HashMap<>();
-    private Map<Integer, ViewHolderFactoryWrapper> idToFactories = new HashMap<>();
+    private Map<Class, ViewHolderFactoryWrapper> factories;
+
+    private Map<Integer, ViewHolderFactoryWrapper> idToFactories;
+
+    public DefaultViewHolderFactoryRegister() {
+        init();
+    }
+
+    private void init() {
+        counter = 1;
+        factories = new HashMap<>();
+        idToFactories = new HashMap<>();
+    }
+
+    @Override
+    public void clear() {
+        init();
+    }
 
     @Override
     public void registerViewHolderFactory(ViewHolderFactory factory) {
