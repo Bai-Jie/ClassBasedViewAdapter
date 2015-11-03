@@ -85,7 +85,7 @@ public class DefaultViewHolderFactoryRegister implements ViewHolderFactoryRegist
                 return candidate;
             }
         }
-        for (Class interfaceClass: clazz.getInterfaces()) {
+        for (Class interfaceClass : clazz.getInterfaces()) {
             candidate = factories.get(interfaceClass);
             if (candidate != null) {
                 return candidate;
@@ -96,7 +96,9 @@ public class DefaultViewHolderFactoryRegister implements ViewHolderFactoryRegist
 
 
     private static class ViewHolderFactoryWrapper {
+
         private final int id;
+
         @NonNull
         private final ViewHolderFactory viewHolderFactory;
 
