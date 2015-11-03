@@ -1,0 +1,35 @@
+[user]
+	name = Bai Jie
+	email = baijie1991@gmail.com
+	signingkey = 9110ADFC
+
+[gui]
+#	fontui = -family XHei -size 9 -weight normal -slant roman -underline 0 -overstrike 0
+	encoding = utf-8
+#	fontdiff = -family 方正准圆_GBK -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+[push]
+	default = simple
+
+#[merge]
+#	tool = p4
+#[mergetool "p4"]
+#	cmd = \"d:/program files/Perforce/p4merge.exe\" \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+#	trustExitCode = false
+#[diff]
+#	tool = p4
+#[difftool "p4"]
+#	cmd = \"d:/program files/Perforce/p4merge.exe\"  -C utf8 \"$LOCAL\" \"$REMOTE\"
+
+[core]
+#	autocrlf = true
+#	autocrlf = input
+#	safecrlf = true
+#	editor = 'D:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin
+#	editor = 'D:/program_green/SublimeTextBuild3059x64/sublime_text.exe' -w
+	editor = vim
+	quotepath = false
+#	whitespace = cr-at-eol
+[alias]
+	cm = commit -S
+	lg = log --show-signature
+
