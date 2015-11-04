@@ -1,4 +1,15 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.3'
+    }
+}
+
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
 
 android {
     compileSdkVersion 23
@@ -21,4 +32,41 @@ android {
 dependencies {
     compile 'com.android.support:recyclerview-v7:23.1.0'
     testCompile 'junit:junit:4.12'
+}
+
+/// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Javadoc ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// see http://stackoverflow.com/questions/23297562/gradle-javadoc-and-android-documentation#answer-24026735
+android.libraryVariants.all { variant ->
+    task("generate${variant.name.capitalize()}Javadoc", type: Javadoc) {
+        //failOnError = false
+        options.encoding = 'UTF-8'
+        options.charSet = 'UTF-8'
+        source = variant.javaCompile.source
+        def androidJar = "${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
+
+        //classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+        classpath += files(variant.javaCompile.classpath.files, androidJar)
+        options {
+            links "http://docs.oracle.com/javase/7/docs/api/"
+            linksOffline "http://d.android.com/reference", "${android.sdkDirectory}/docs/reference"
+        }
+        exclude '**/BuildConfig.java'
+        exclude '**/R.java'
+    }
+}
+
+task androidJavadocsJar(type: Jar, dependsOn: 'generateReleaseJavadoc')
+androidJavadocsJar.doFirst {
+    classifier = 'javadoc'
+    from generateReleaseJavadoc.destinationDir
+}
+
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+artifacts {
+    archives androidSourcesJar
+    archives androidJavadocsJar
 }

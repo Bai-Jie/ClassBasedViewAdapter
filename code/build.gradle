@@ -13,6 +13,9 @@ buildscript {
 }
 
 allprojects {
+    group = 'gq.baijie.classbasedviewadapter'
+    version = '1.0'
+
     repositories {
         jcenter()
     }
