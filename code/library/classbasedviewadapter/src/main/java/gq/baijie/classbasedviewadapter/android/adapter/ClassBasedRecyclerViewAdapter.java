@@ -9,10 +9,33 @@ import java.util.List;
 
 public class ClassBasedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+    @NonNull
+    private final ViewHolderFactoryRegister register;
+
     private List dataset;
 
-    @Nullable
-    private ViewHolderFactoryRegister register;
+
+    /**
+     * construct with {@link ViewHolderFactoryRegister} used to find {@link ViewHolderFactory}
+     *
+     * @param register a {@code ViewHolderFactoryRegister} or null to use {@link
+     *                 ViewHolderFactoryRegisters#newRegister()}
+     */
+    public ClassBasedRecyclerViewAdapter(@Nullable ViewHolderFactoryRegister register) {
+        if (register != null) {
+            this.register = register;
+        } else {
+            this.register = ViewHolderFactoryRegisters.newRegister();
+        }
+    }
+
+    /**
+     * same as {@link #ClassBasedRecyclerViewAdapter(ViewHolderFactoryRegister)
+     * ClassBasedRecyclerViewAdapter(null)}
+     */
+    public ClassBasedRecyclerViewAdapter() {
+        this(null);
+    }
 
     public List getDataset() {
         return dataset;
@@ -24,20 +47,7 @@ public class ClassBasedRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
 
     @NonNull
     public ViewHolderFactoryRegister getRegister() {
-        if (register != null) {
-            return register;
-        } else {
-            return ViewHolderFactoryRegisters.defaultViewHolderFactoryRegister();
-        }
-    }
-
-    /**
-     * set {@link ViewHolderFactoryRegister} used to find {@link ViewHolderFactory}
-     *
-     * @param register a {@link ViewHolderFactoryRegister} or null to use default register
-     */
-    public void setRegister(@Nullable ViewHolderFactoryRegister register) {
-        this.register = register;
+        return register;
     }
 
     @Override

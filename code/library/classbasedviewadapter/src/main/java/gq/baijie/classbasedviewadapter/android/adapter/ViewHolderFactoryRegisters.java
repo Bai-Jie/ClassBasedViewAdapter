@@ -6,11 +6,9 @@ import gq.baijie.classbasedviewadapter.android.adapter.impl.DefaultViewHolderFac
 
 public class ViewHolderFactoryRegisters {
 
-    private static final ViewHolderFactoryRegister DEFAULT = new DefaultViewHolderFactoryRegister();
-
     @NonNull
-    public static ViewHolderFactoryRegister defaultViewHolderFactoryRegister() {
-        return DEFAULT;
+    public static ViewHolderFactoryRegister newRegister() {
+        return new DefaultViewHolderFactoryRegister();
     }
 
 }
