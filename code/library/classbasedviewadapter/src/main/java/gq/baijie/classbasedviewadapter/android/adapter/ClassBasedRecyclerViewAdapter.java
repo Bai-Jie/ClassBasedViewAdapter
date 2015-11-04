@@ -12,7 +12,7 @@ public class ClassBasedRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
     @NonNull
     private final ViewHolderFactoryRegister register;
 
-    private List dataset;
+    private DataSet dataSet;
 
 
     /**
@@ -37,12 +37,12 @@ public class ClassBasedRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
         this(null);
     }
 
-    public List getDataset() {
-        return dataset;
+    public void setDataSet(DataSet dataSet) {
+        this.dataSet = dataSet;
     }
 
-    public void setDataset(List dataset) {
-        this.dataset = dataset;
+    public void setDataSet(List dataSet) {
+        setDataSet(new ListDataSetAdapter(dataSet));
     }
 
     @NonNull
@@ -52,12 +52,12 @@ public class ClassBasedRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
 
     @Override
     public int getItemCount() {
-        return dataset != null ? dataset.size() : 0;
+        return dataSet != null ? dataSet.size() : 0;
     }
 
     @Override
     public int getItemViewType(int position) {
-        return getRegister().getItemViewType(dataset.get(position).getClass());
+        return getRegister().getItemViewType(dataSet.get(position).getClass());
     }
 
     @Override
@@ -67,7 +67,27 @@ public class ClassBasedRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        getRegister().bindViewHolder(holder, dataset.get(position));
+        getRegister().bindViewHolder(holder, dataSet.get(position));
+    }
+
+    private static class ListDataSetAdapter implements DataSet {
+
+        private final List delegate;
+
+        private ListDataSetAdapter(List delegate) {
+            this.delegate = delegate;
+        }
+
+        @Override
+        public int size() {
+            return delegate.size();
+        }
+
+        @Override
+        public Object get(int location) {
+            return delegate.get(location);
+        }
+
     }
 
 }

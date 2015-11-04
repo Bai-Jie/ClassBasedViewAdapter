@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         mAdapter.getRegister().registerViewHolderFactory(new ViewType2Holder.Factory());
         mAdapter.getRegister().registerViewHolderFactory(new ViewType3Holder.Factory());
 
-        mAdapter.setDataset(SAMPLE);
+        mAdapter.setDataSet(SAMPLE);
         mAdapter.notifyDataSetChanged();
 
     }
