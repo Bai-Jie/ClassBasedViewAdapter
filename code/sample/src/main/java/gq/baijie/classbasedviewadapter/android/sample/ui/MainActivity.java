@@ -8,8 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import java.util.Arrays;
 import java.util.List;
 
-import gq.baijie.classbasedviewadapter.R;
 import gq.baijie.classbasedviewadapter.android.adapter.ClassBasedRecyclerViewAdapter;
+import gq.baijie.classbasedviewadapter.android.sample.R;
 import gq.baijie.classbasedviewadapter.android.sample.ui.entity.Type1;
 import gq.baijie.classbasedviewadapter.android.sample.ui.entity.Type2;
 import gq.baijie.classbasedviewadapter.android.sample.ui.entity.Type3;

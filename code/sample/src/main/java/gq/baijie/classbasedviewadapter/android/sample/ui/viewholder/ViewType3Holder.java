@@ -6,8 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import gq.baijie.classbasedviewadapter.R;
 import gq.baijie.classbasedviewadapter.android.adapter.ViewHolderFactory;
+import gq.baijie.classbasedviewadapter.android.sample.R;
 import gq.baijie.classbasedviewadapter.android.sample.ui.entity.Type3;
 
 public class ViewType3Holder extends RecyclerView.ViewHolder {
