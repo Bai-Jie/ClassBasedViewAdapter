@@ -40,10 +40,10 @@ public class ViewType3Holder extends RecyclerView.ViewHolder {
         }
 
         @Override
-        public void bindViewHolder(ViewType3Holder holder, Type3 value) {
+        public void bindViewHolder(ViewType3Holder holder, Type3 value, int position) {
             holder.text1.setText(value.text1);
             holder.text2.setText(value.text2);
-            holder.text3.setText(value.text3);
+            holder.text3.setText(value.text3 + " @ position " + position);
         }
 
     }

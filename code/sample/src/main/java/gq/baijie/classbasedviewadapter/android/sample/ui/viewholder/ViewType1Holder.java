@@ -37,9 +37,9 @@ public class ViewType1Holder extends RecyclerView.ViewHolder {
         }
 
         @Override
-        public void bindViewHolder(ViewType1Holder holder, Type1 value) {
+        public void bindViewHolder(ViewType1Holder holder, Type1 value, int position) {
             holder.text1.setText(value.text1);
-            holder.text2.setText(value.text2);
+            holder.text2.setText(value.text2 + " @ position " + position);
         }
 
     }

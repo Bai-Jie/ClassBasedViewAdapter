@@ -9,6 +9,6 @@ public interface ViewHolderFactory<T, VH extends RecyclerView.ViewHolder> {
 
     VH createViewHolder(ViewGroup parent);
 
-    void bindViewHolder(VH holder, T value);
+    void bindViewHolder(VH holder, T value, int position);
 
 }

@@ -11,6 +11,6 @@ public interface ViewHolderFactoryRegister {
 
     RecyclerView.ViewHolder createViewHolder(ViewGroup parent, int itemViewType);
 
-    void bindViewHolder(RecyclerView.ViewHolder holder, Object forThis);
+    void bindViewHolder(RecyclerView.ViewHolder holder, Object forThis, int position);
 
 }

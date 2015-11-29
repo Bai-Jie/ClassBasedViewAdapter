@@ -14,7 +14,7 @@ buildscript {
 
 allprojects {
     group = 'gq.baijie.classbasedviewadapter'
-    version = new Version('0.1.0')
+    version = new Version('0.2.0')
     status = version.status
 
     repositories {

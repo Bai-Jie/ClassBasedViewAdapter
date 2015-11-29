@@ -67,7 +67,7 @@ public class ClassBasedRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        getRegister().bindViewHolder(holder, dataSet.get(position));
+        getRegister().bindViewHolder(holder, dataSet.get(position), position);
     }
 
     private static class ListDataSetAdapter implements DataSet {

@@ -42,8 +42,9 @@ public class DefaultViewHolderFactoryRegister implements ViewHolderFactoryRegist
     }
 
     @Override
-    public void bindViewHolder(RecyclerView.ViewHolder holder, Object forThis) {
-        searchForNonNull(forThis.getClass()).viewHolderFactory.bindViewHolder(holder, forThis);
+    public void bindViewHolder(RecyclerView.ViewHolder holder, Object forThis, int position) {
+        searchForNonNull(forThis.getClass()).viewHolderFactory
+                .bindViewHolder(holder, forThis, position);
     }
 
     @NonNull
